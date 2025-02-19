@@ -1,23 +1,16 @@
-from fastapi import APIRouter, File, UploadFile, HTTPException
-import os
-from services.text_extractor import extract_text_from_pdf
+from fastapi import APIRouter, UploadFile, File, HTTPException
+import pymupdf  # Correct module
+
+from services.text_extractor import extract_text
 
 router = APIRouter()
 
-UPLOAD_DIR = "uploads"
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+@router.post("/")
+async def upload_file(file: UploadFile = File(...)):
+    if not file.filename.endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Only PDF files are allowed")
 
-@router.post("/upload/")
-async def upload_pdf(file: UploadFile = File(...)):
-    try:
-        # Save the uploaded file
-        file_path = os.path.join(UPLOAD_DIR, file.filename)
-        with open(file_path, "wb") as f:
-            f.write(file.file.read())
+    pdf_content = await file.read()
+    extracted_text = extract_text(pdf_content)
 
-        # Extract text
-        extracted_text = extract_text_from_pdf(file_path)
-        return {"filename": file.filename, "extracted_text": extracted_text}
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return {"filename": file.filename, "extracted_text": extracted_text}
