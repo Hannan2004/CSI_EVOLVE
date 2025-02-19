@@ -1,0 +1,537 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --background: #f0f4f8;
+  --foreground: #1a202c;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #10b981;
+  --accent: #8b5cf6;
+  --muted: #64748b;
+  --muted-foreground: #94a3b8;
+  --card: #ffffff;
+  --card-foreground: #1a202c;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #3b82f6;
+}
+
+.container {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--card);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.logoIcon {
+  font-size: 1.75rem;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--foreground);
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: var(--input);
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: var(--background) 0.4s ease;
+}
+
+.userProfile:hover {
+  background: var(--muted-foreground);
+}
+
+.content {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--foreground);
+  text-align: center;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.uploadSection,
+.analysisSection,
+.clausesSection,
+.summarySection {
+  background: var(--card);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.uploadSection:hover,
+.analysisSection:hover,
+.clausesSection:hover,
+.summarySection:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary);
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+p {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.uploadArea {
+  border: 2px dashed var(--border);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+  background: var(--background);
+}
+
+.uploadArea:hover {
+  border-color: var(--primary);
+  background: var(--input);
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.uploadIconWrapper {
+  width: 4rem;
+  height: 4rem;
+  background: var(--primary);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.uploadIcon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--card);
+}
+
+.uploadText {
+  color: var(--foreground);
+}
+
+.uploadText strong {
+  color: var(--primary);
+}
+
+.uploadHint {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.analyzeButton,
+.downloadButton {
+  width: 100%;
+  background: var(--primary);
+  color: var(--card);
+  border: none;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.downloadButton {
+  background: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.analyzeButton:hover,
+.downloadButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+  background: var(--primary-dark);
+}
+
+.buttonShine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  100% {
+    left: 200%;
+  }
+}
+
+.riskScore {
+  background: var(--background);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.scoreHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.riskLevel {
+  color: var(--accent);
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 1rem;
+}
+
+.scoreVisual {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.scoreValue {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.scoreChart {
+  flex: 1;
+  max-width: 150px;
+}
+
+.circleChart {
+  transform: rotate(-90deg);
+}
+
+.progressArc {
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+.riskFactors {
+  display: grid;
+  gap: 1rem;
+}
+
+.riskFactor {
+  background: var(--background);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.riskFactorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.riskBadgeHigh,
+.riskBadgeMedium,
+.riskBadgeLow {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.riskBadgeHigh {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.riskBadgeMedium {
+  background: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+}
+
+.riskBadgeLow {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+}
+
+.riskBar {
+  height: 0.5rem;
+  background: var(--input);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.riskProgress {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 1rem;
+  transition: width 1s ease;
+}
+
+.clausesList {
+  display: grid;
+  gap: 1rem;
+}
+
+.clause {
+  background: var(--background);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.clause:hover {
+  background: var(--card);
+  border-color: var(--primary);
+}
+
+.clauseHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.clauseHeader h3 {
+  color: var(--foreground);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.clauseBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
+}
+
+.clauseActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.clauseButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  background: var(--input);
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clauseButton:hover {
+  background: var(--primary);
+  color: var(--card);
+}
+
+.summaryContent {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.summaryCard {
+  background: var(--background);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.summaryCard h4 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.summaryList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.summaryList li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.summaryList li::before {
+  content: "•";
+  color: var(--primary);
+  font-size: 1.5rem;
+  line-height: 0;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .uploadSection,
+  .analysisSection,
+  .clausesSection,
+  .summarySection {
+    padding: 1rem;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .userProfile span {
+    display: none;
+  }
+}
+
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mobileMenuButton {
+    display: block;
+  }
+}
+
+.mobileMenuOpen {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileMenuOpen {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--card);
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobileMenuOpen .navLink {
+    padding: 0.5rem 0;
+  }
+}
+
+.downloadIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Added styles for responsiveness */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
