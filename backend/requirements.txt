@@ -1,0 +1,32 @@
+# FastAPI and Uvicorn
+fastapi
+uvicorn
+
+pymupdf
+chromadb
+python-dotenv
+
+
+# PDF Processing
+pymupdf  # PyMuPDF for extracting text from PDFs
+
+# LangChain & LLM API Integration
+langchain
+groq  # Groq API client
+
+# Database (ChromaDB for storing embeddings)
+chromadb
+sqlite-utils  # SQLite support for metadata
+
+# Text Processing
+numpy
+pandas
+tqdm  # Progress bar
+sentence-transformers  # For embedding text
+nltk  # NLP utilities
+
+# Environment Variables
+python-dotenv  # For managing API keys securely
+
+# Miscellaneous
+httpx  # Async HTTP client for API requests
